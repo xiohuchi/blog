@@ -1,8 +1,4 @@
 # yangbin's Blog
-my blog
-
-# Jiajun's Blog
-
 不忘初心 方得始终。
 
 - [关于我](articles/aboutme.md)
