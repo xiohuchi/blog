@@ -1,0 +1,60 @@
+1、在github上创建一个仓库
+
+2、检出仓库并初始化
+选择刚创建的仓库，在右下方的HTTPS clone URL处：将地址复制到剪贴板。
+git clone https://github.com/zxpo/zxpo_linux.git 不需要在github上有账号read
+$git clone https://zxpo@github.com/zxpo/zxpo_linux.git 需要在github上有账号，read+write  
+会提示输入密码，注意此处的密码不是你在github上账户的密码，而是当前登录系统用户的密码。
+zxpo是github上的账号
+3、配置提交使用的用户名和邮箱
+git config --global user.name "Your Name"
+git config --global user.email you@example.com
+在git命令输出中开启颜色显示
+git config --global color.ui true 
+
+4、工作流:
+你的本地仓库由git维护的三棵"树"组成。第一个是你的工作目录，它持有实际文件;
+第二个是缓存区(Index),它像个缓存区域，临时保存你的改动;最后是HEAD,指向你最近
+一次提交后的结果。working dir-----add--->Index(Stage)------commit------>HEAD
+
+5、添加与提交
+第一步: 先添加到缓存区，使用命令:git add <filename> 或 git add *
+第二步: 提交到本地仓库的HEAD，使用命令:git commit -m "代码提交日志信息"
+第三步: 提交到远端仓库,使用命令:git push origin master。
+注意：如果没有克隆远程服务器上的现有仓库，并想将你的本地仓库提交到某个远程服务器，
+可以使用命令:git remote add origin <server>
+
+6、分支
+默认主分支为master
+显示本地git库中的所有分支: git branch，若分支名前有*，则表示此分支为当前分支。
+列出服务器git库的所有分支: git branch -r
+查看当前在哪个分支上: cat .git/HEAD
+创建分支: git branch 分支名
+创建分支并切换到新建分支: git checkout -b feature_x
+切换分支命令: git checkout 分支名 
+删除分支命令: git branch -D feature_x 
+比较两个上文件的区别: git diff <source_branch> <target_branch>
+将分支推送到远端仓库: git push origin <branch>
+查看当前分支历史: git-show-branch
+查看所有分支历史: git-show-branch -all
+查看当前分支的操作记录: git whatchanged
+
+
+7、更新与合并
+更新你的本地仓库至最新改动，使用命令:git pull
+合并其他分支到你的当前分支: git merge <branch>
+处理冲突后，将它们标记为合并成功: git add <filename>
+
+
+8、标签
+创建标签：git tag 1.0.0 提交ID
+获取提交ID: git log
+
+9、替换本地改动
+使用HEAD中的最新内容替换掉你的工作目录中的文件，已添加到缓存区的改动，
+以及新文件都不受影响: git checkout --<filename>
+
+丢弃所有的本地改动与提交：
+获取服务器上最新的版本: git fetch origin
+将本地主分支指向刚获得的最新版本: git reset --hard origin/master
+     
